@@ -4,13 +4,14 @@ import { useNavigate, useParams } from 'react-router-dom'
 import api from '../../services/api';
 import './filme-info.css'
 function Filme() {
-    const { id_filme } = useParams();
+    const { id } = useParams();
     const navigate = useNavigate()
     const [filme, setFilme] = useState({})
     const [loading, setLoading] = useState(true)
+
     useEffect(() => {
         async function loadFilme() {
-            await api.get(`/movie/${id_filme}`, {
+            await api.get(`/movie/${id}`, {
                 params: {
                     api_key: 'b0e0b492cd887aede31ca030d554b60b',
                     language: 'pt-BR',
@@ -21,7 +22,7 @@ function Filme() {
                 setLoading(false)
             }).catch(() => {
                 navigate("/", { replace: true })
-                console.log('filme nao encontrado')
+                return;
             })
         }
         loadFilme();
@@ -30,7 +31,7 @@ function Filme() {
         return () => {
             console.log('COMPONENTE DESMONTADO')
         }
-    }, [])
+    }, [navigate, id])
 
     if (loading) {
         return (
@@ -40,6 +41,23 @@ function Filme() {
         )
     }
 
+    function salvarFilme() {
+        const minhaLista = localStorage.getItem("@primeflix");
+
+        let filmesSalvos = JSON.parse(minhaLista) || [];
+
+        const hasFilme = filmesSalvos.some((item) => item.id === filme.id)
+
+        if (hasFilme) {
+            alert('Filme já esta na sua lista');
+            return;
+        }
+        filmesSalvos.push(filme);
+        localStorage.setItem('@primeflix', JSON.stringify(filmesSalvos));
+        alert("Filme salvo com sucesso")
+
+
+    }
 
     return (
         <div className='filme-info'>
@@ -51,9 +69,9 @@ function Filme() {
             <strong>Avaliação: {filme.vote_average} / 10</strong>
 
             <div className='area-buttons'>
-                <button>Salvar</button>
+                <button onClick={() => { salvarFilme() }}>Salvar</button>
                 <button>
-                    <a href='#'>Trailer</a>
+                    <a target="blank" rel='external' href={`https://www.youtube.com/results?search_query=${filme.title} Trailer`}>Trailer</a>
                 </button>
             </div>
 
