@@ -30,7 +30,6 @@ function Filme() {
 
 
         return () => {
-            console.log('COMPONENTE DESMONTADO')
         }
     }, [navigate, id])
 
