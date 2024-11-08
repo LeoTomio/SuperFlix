@@ -1,57 +1,73 @@
 .lista-filmes {
+  max-width: 1000px;
+  margin: 14px auto;
+}
+
+.lista-filmes h1 {
+    display: flex;
+    justify-content: center;
+    margin-block: 2rem;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.lista-filmes article {
+  width: 33%;
+  display: inline-grid;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.lista-filmes strong {
+  margin-bottom: 14px;
+  text-align: center;
+  font-size: 1.5rem;
+  display: block;
+  overflow: hidden;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+}
+
+.lista-filmes img {
+  width: 900px;
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  display: block;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.lista-filmes a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  font-size: 24px;
+  background-color: #116feb;
+  text-decoration: none;
+  color: #fff;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+@media (max-width: 950px) {
+  .lista-filmes {
     max-width: 800px;
-    margin: 14px auto;
-}
+  }
 
-.loading{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 14px;
-}
-
-.lista-filmes article{
+  .lista-filmes article {
     width: 100%;
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 4px;
-}
-
-.lista-filmes strong{
-    margin-bottom: 14px;
-    text-align: center;
-    font-size: 22px;
     display: block;
+  }
+
+  .lista-filmes img {
+    max-height: 340px;
+  }
 }
-
-.lista-filmes img{
-    width: 900px;
-    max-width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    display: block;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-}
-
-.lista-filmes a{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 0;
-    font-size: 24px;
-    background-color: #116FEB;
-    text-decoration: none;
-    color: #fff;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-
-@media (max-width: 600px) {
-    .lista-filmes img{
-        max-height: 340px;
-    }
-}
-
-

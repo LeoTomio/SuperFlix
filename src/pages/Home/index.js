@@ -22,7 +22,7 @@ function Home() {
 
             })
             //console.log(response.data.results.slice(0,10));
-            setFilmes(response.data.results.slice(0, 10))
+            setFilmes(response.data.results.slice(0, 20))
             setLoading(false)
         }
 
@@ -41,7 +41,9 @@ function Home() {
 
     return (
         <div className='container'>
+
             <div className='lista-filmes'>
+                <h1>Bem vindo a Home</h1>
                 {filmes.map((filme) => (
                     <article key={filme.id}>
                         <strong>{filme.title}</strong>
@@ -51,10 +53,10 @@ function Home() {
                         </div>
                     </article>
                 ))}
-                <h1>Bem vindo a Home</h1>
             </div>
         </div>
 
     )
 }
 export default Home;
+
